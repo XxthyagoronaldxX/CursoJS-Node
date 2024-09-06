@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade - Formulário</title>
+</head>
+<body>
+<h1>Formulário de Contato</h1>
+<form>
+    <label for="name-form">Nome completo:</label>
+    <input type="text" name="name" id="name-form" placeholder="Digite seu nome completo"/>
+    <br/>
+
+    <label for="email-form">Email:</label>
+    <input type="email" name="email" id="email-form" placeholder="Digite seu email"/>
+    <br/>
+
+    <label for="tel-form">Telefone:</label>
+    <input type="tel" name="tel" id="tel-form" placeholder="Digite seu telefone"/>
+
+    <p style="margin-bottom: 0px; margin-top: 0px;">Sexo: </p>
+    <input type="radio" name="sexo" value="masculino" id="masculino-form">
+    <label for="masculino-form">Masculino</label>
+    <input type="radio" name="sexo" value="feminino" id="feminino-form">
+    <label for="feminino-form">Feminino</label>
+    <br/>
+
+    <label for="area-form">Área de interesse:</label>
+    <select name="area" id="area-form">
+        <option value="desenvolvimento">Desenvolvimento</option>
+        <option value="estudo">Estudo</option>
+        <option value="db">DB</option>
+    </select>
+    <br/>
+
+    <p style="margin-bottom: 0px; margin-top: 0px;">Preferências de contato: </p>
+    <input type="checkbox" name="contato" value="email" id="contato-email-form">
+    <label for="contato-email-form">E-mail</label>
+    <input type="checkbox" name="contato" value="telefone" id="contato-telefone-form">
+    <label for="contato-telefone-form">Telefone</label>
+    <input type="checkbox" name="contato" value="sms" id="contato-sms-form">
+    <label for="contato-sms-form">SMS</label>
+    <br/>
+
+    <label for="message-form">Mensagem:</label>
+    <textarea name="message" id="message-form" cols="30" rows="5" placeholder="Digite uma mensagem."></textarea>
+    <br/>
+
+    <input type="submit" value="Enviar"/>
+</form>
+</body>
+</html>
