@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+        .cmp-inline-block {
+            display: inline-block;
+        }
+
+        .cmp-block {
+            display: block;
+        }
+
+        .cmp-flex {
+            display: flex;
+            justify-content: center;
+            background-color: blue;
+            flex-direction: row;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .cmp-grid {
+            display: grid;
+            /*
+            Grid Template:
+
+            grid-template-columns: repeat(3, 1fr);
+            */
+            grid-template-columns: 100px 100px 100px;
+            gap: 10px;
+        }
+
+        .el {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="cmp-inline-block">
+        <p>CmpInlineBlock</p>
+    </div>
+
+    <hr/>
+
+    <div class="cmp-block">
+        <h1>CmpBlock</h1>
+    </div>
+
+    <hr/>
+
+    <div class="cmp-flex">
+        <div class="el"></div>
+        <div class="el"></div>
+    </div>
+
+    <hr/>
+
+    <div class="cmp-grid">
+        <div class="el"></div>
+        <div class="el"></div>
+        <div class="el"></div>
+        <div class="el"></div>
+    </div>
+</body>
+</html>
