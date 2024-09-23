@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #root {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cmp {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+        }
+    </style>
+</head>
+<body id="root">
+    <div class="cmp">
+        <h1 class="cmp-title">Boas-Vindas</h1>
+        <label for="cor">Informe uma cor (Inglês):</label>
+        <input id="cor" name="cor" type="text"/>
+        <label for="title">Informe um novo título:</label>
+        <input id="title" name="title" type="text"/>
+    </div>
+
+
+    <script>
+        const corInputElement = document.getElementById("cor");
+        const titleInputElement = document.getElementById("title");
+
+        corInputElement.addEventListener("change", (event) => {
+            document.getElementById("root").style.backgroundColor = event.target.value;
+        });
+
+        titleInputElement.addEventListener("change", (event) => {
+            document.getElementsByClassName("cmp-title")[0].innerHTML = event.target.value || "Boas-Vindas";
+        })
+    </script>
+</body>
+</html>
