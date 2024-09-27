@@ -35,10 +35,7 @@
             width: 100vw;
             height: 100vh;
             z-index: 1;
-        }
-
-        .cmp-dialog--hidden {
-            display: none;
+            visibility: hidden;
         }
 
         .cmp-dialog--box {
@@ -55,15 +52,15 @@
     </style>
 </head>
 <body id="root">
-    <form class="cmp-form" onsubmit="(event) => {event.preventDefault(); showDialog();}">
+    <form class="cmp-form" action="#" onsubmit="showDialog(event)">
         <label for="name-form">Informe o nome:</label>
-        <input type="text" name="name" placeholder="Ex: Thyago" id="name-form"/>
+        <input type="text" name="name" placeholder="Ex: Thyago" id="name-form" required/>
 
         <label for="tel-form">Informe o Telefone:</label>
-        <input type="tel" name="tel" id="tel-form"/>
+        <input type="tel" name="tel" id="tel-form" required/>
 
         <label for="email-form">Informe o E-mail:</label>
-        <input type="email" name="email" placeholder="Ex: test@gmail.com" id="email-form"/>
+        <input type="email" name="email" placeholder="Ex: test@gmail.com" id="email-form" required/>
 
         <button type="submit">Enviar</button>
     </form>
@@ -71,21 +68,27 @@
     <div class="cmp-dialog">
         <div class="cmp-dialog--box">
             <h1 class="cmp-message">Formulário enviado.</h1>
-            <button>Preencher novamente</button>
+            <button onclick="closeDialog()">Preencher novamente</button>
         </div>
     </div>
 
-    <script defer>
-        function showDialog() {
+    <script>
+        function showDialog(event) {
+            event.preventDefault();
+
             const dialogElement = document.getElementsByClassName("cmp-dialog")[0];
-            console.log("Submit")
-            dialogElement.classList.remove("cmp-dialog--hidden");
+
+            document.getElementById("name-form").value = "";
+            document.getElementById("tel-form").value = "";
+            document.getElementById("email-form").value = "";
+
+            dialogElement.style.visibility = "visible";
         }
 
         function closeDialog() {
             const dialogElement = document.getElementsByClassName("cmp-dialog")[0];
             
-            dialogElement.classList.add("cmp-dialog--hidden");
+            dialogElement.style.visibility = "hidden";
         }
     </script>
 </body>

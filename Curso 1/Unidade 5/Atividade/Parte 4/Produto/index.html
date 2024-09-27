@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+</head>
+<body>
+    
+    <script>
+        function calcPrice(value, mode) {
+            if (mode === 1) return value - (value * 0.1);
+            else if (mode === 2) return value - (value * 0.05);
+            else if (mode === 3) return value;
+            else return value + (value * 0.1);
+        } 
+
+        let value = parseFloat(prompt("Informe o valor do produto: "))
+        let mode = parseInt(prompt("Informe o modo de pagamento:\n\n1 - À vista ou cheque. 10% Desconto\n" + 
+            "2 - À vista no cartão de crédito. 5% Desconto\n3 - 2x Sem juros.\n4 - 3x Com juros. 10% Juros"));
+
+        alert(calcPrice(value, mode));
+    </script>
+</body>
+</html>
