@@ -24,21 +24,24 @@ let eleicao = {
 }
 
 function initCandidatos() {
-    sortCandidatos();
+    sortCandidatos(eleicao.candidatos);
 
     const candidatosContainer = document.getElementsByClassName("candidatos")[0];
 
     candidatosContainer.innerHTML = "";
-    for (const candidato of candidatos) 
+    for (const candidato of eleicao.candidatos) 
         candidatosContainer.innerHTML += genCandidatoElement(candidato);
+
+    document.getElementById("votos-brancos").innerHTML = eleicao.branco;
+    document.getElementById("votos-nulos").innerHTML = eleicao.nulo;
 }
 
-function sortCandidatos() {
+function sortCandidatos(candidatos) {
     candidatos.sort((a, b) => b.votos - a.votos);
 }
 
 function genCandidatoElement(candidato) {
-    return `
+    return /*html*/`
     <li>
         <span class="nome-candidato">${candidato.num + " :: " + candidato.nome}</span>
         <span class="votos-candidato">${candidato.votos} votos</span>
@@ -47,12 +50,30 @@ function genCandidatoElement(candidato) {
 }
 
 function votarCandidato() {
-    const candidatoNum = document.getElementById("numero-candidato").value;
+    const numCandidatoElement = document.getElementById("numero-candidato");
+    const candidatoNumStr = numCandidatoElement.value;
 
+    if (candidatoNumStr === "") {
+        eleicao.nulo++;
+    } else {
+        const candidatoNum = parseInt(candidatoNumStr);
 
+        if (candidatoNum === 0) {
+            eleicao.branco++;
+        } else {
+            const candidato = eleicao.candidatos.find((candidato) => candidato.num === candidatoNum);
 
-    console.log(candidatoNum);
+            if (candidato === undefined) {
+                numCandidatoElement.setCustomValidity("Candidato não encontrado!");
+                numCandidatoElement.reportValidity();
+            } else {
+                candidato.votos++;
+            }
+        }
+    }
+    
 
+    initCandidatos();
 }
 
 initCandidatos();

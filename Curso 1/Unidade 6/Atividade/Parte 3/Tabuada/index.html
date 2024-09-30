@@ -7,7 +7,29 @@
 </head>
 <body>
     <div>
-        
+        <label for="num">Informe um número:</label>
+        <input id="num" type="number"/>
+
+        <hr/>
+
+        <ul id="tab">
+
+        </ul>
     </div>
+
+    <script>
+        function genCalcLineElement(a, b) {
+            return /*html*/`<li>${a} x ${b} = ${a * b}</li>`
+        } 
+
+        document.getElementById("num").addEventListener("change", (event) => {
+            const value = event.target.value;
+            const cmpTabElement = document.getElementById("tab");
+        
+            cmpTabElement.innerHTML = "";
+
+            for (let i = 1;i <= 10;i++) cmpTabElement.innerHTML += genCalcLineElement(i, value);
+        });
+    </script>
 </body>
 </html>
