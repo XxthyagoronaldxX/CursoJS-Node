@@ -3,10 +3,10 @@ function useSubject(initialState) {
         _observers: [],
         _state: initialState,
         getState() { 
-            return this._state 
+            return JSON.parse(JSON.stringify(this._state)); 
         },
         setState(state) { 
-            this._state = state;
+            this._state = Object.freeze(state);
 
             this.notifyObservers();
         },

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota de Veículos - Transportes Rapidez</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Frota de Veículos - Transportes Rapidez</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- Informações da Empresa -->
+        <div class="company-info">
+            <h2>Informações da Empresa</h2>
+            <div class="company-details">
+                <div>
+                    <p><strong>Nome da Empresa:</strong> <span id="empresa-nome"></span></p>
+                    <p><strong>Telefone:</strong> <span id="telefone"></span></p>
+                </div>
+                <div>
+                    <p><strong>Sede:</strong></p>
+                    <p id="rua"></p>
+                    <p id="cidade"></p>
+                    <p><strong>CEP:</strong> <span id="cep"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Veículos -->
+        <div class="vehicle-list">
+            <h2>Veículos da Frota</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Placa</th>
+                        <th>Disponível</th>
+                    </tr>
+                </thead>
+                <tbody id="veiculos">
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

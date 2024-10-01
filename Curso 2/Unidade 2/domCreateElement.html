@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomCreateElement</title>
+</head>
+<body>
+    <ul id="list"></ul>
+
+    <script>
+        const alunos = [{nome: "Thyago", idade: 10}, {nome: "José", idade: 20}];
+        const listElement = document.getElementById("list");
+
+        for (const aluno of alunos) {
+            const liElement = document.createElement("li");
+            liElement.textContent = `Nome: ${aluno.nome}, idade: ${aluno.idade}`;
+            liElement.id = aluno.nome;
+            listElement.append(liElement);
+        }
+    </script>
+</body>
+</html>

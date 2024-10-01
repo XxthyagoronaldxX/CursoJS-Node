@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML</title>
+</head>
+<body>
+    <script src="../../Utils/usePipeline.js"></script>
+    <script>
+        const xmlStr = /*xml*/ `
+        <alunos>
+            <aluno>
+                <nome>Thyago</nome>
+                <idade>18</idade>
+            </aluno>
+            <aluno>
+                <nome>Pedro</nome>
+                <idade>23</idade>
+            </aluno>
+        </alunos>`;
+
+        function createAlunoBy(alunoXml) {
+            return {
+                nome: alunoXml.querySelector("nome").textContent,
+                idade: parseInt(alunoXml.querySelector("idade").textContent)
+            };
+        }
+
+        function xmlToString(xml) {
+            return new XMLSerializer().serializeToString(xml);
+        }
+
+        function parseXml(xmlStr) {
+            const parser = new DOMParser();
+            return parser.parseFromString(xmlStr, "text/xml");
+        }
+
+        function genAlunosByXml(xmlObject) {
+            const alunos = [];
+
+            for (const alunoXml of xmlObject.querySelectorAll("aluno")) 
+                alunos.push(createAlunoBy(alunoXml));
+
+            return alunos;
+        }
+
+        function addAluno(xmlObject, nome, idade) {
+            const novoAluno = xmlObject.createElement("aluno");
+            novoAluno.innerHTML = /*html*/`
+            <nome>${nome}</nome>
+            <idade>${idade}</idade>
+            `
+            xmlObject.querySelector("alunos").appendChild(novoAluno);
+        }
+
+        function removeAlunoByNome(xmlObject, nome) {
+            for (const alunoXml of xmlObject.querySelectorAll("aluno")) 
+                if (alunoXml.querySelector("nome").textContent === nome)
+                    alunoXml.remove();
+        }
+
+        console.log(usePipeline(parseXml, genAlunosByXml)(xmlStr));
+
+        const xmlObject = parseXml(xmlStr);
+
+        addAluno(xmlObject, "test", 12);
+        removeAlunoByNome(xmlObject, "Thyago");
+
+        console.log(xmlObject);
+    </script>
+</body>
+</html>
