@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    
+    <script>
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+
+        window.resizeTo(600, 600);
+        window.moveTo(100, 100);
+
+        console.log(window.navigator);
+        console.log(window.location);
+
+        function opLocation() {
+            location.href = "URL"; // Muda HREF do location.
+            location.replace("URL"); // Substitui URL pela URL passada.
+            location.assign("URL"); // Redireciona para URL passada.
+            location.reload(); // Recarrega página.
+        }
+
+        console.log(window.screen.availHeight);
+        console.log(window.screen.availWidth);
+        console.log(window.screen.height);
+        console.log(window.screen.width);
+
+        localStorage.setItem("user", "Usuario");
+        localStorage.setItem("password", "Senha");
+        sessionStorage.setItem("test", "Ola");
+    </script>
+</body>
+</html>

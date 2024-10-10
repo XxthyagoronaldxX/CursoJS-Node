@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MostrarMensagem</title>
+</head>
+<body>
+    
+    <script>
+        function printConsole(msg) {
+            console.log(msg);
+        }
+
+        function printDocument(msg) {
+            document.write(msg);
+        }
+
+        function printJanela(msg) {
+            window.alert(msg);
+            // document.getElementsByTagName("title")[0].innerHTML = msg;
+        }
+
+        function soma(a, b, callback) {
+            callback(a + b);
+        }
+
+        let val1 = parseInt(prompt("Informe o valor 1:"));
+        let val2 = parseInt(prompt("Informe o valor 2:"));
+        let opc = prompt("Selecione a opção de print:\n\n1. Console.\n2. Janela.\n3. Documento.");
+
+        if (opc == 1) {
+            soma(val1, val2, printConsole);
+        } else if (opc == 2) {
+            soma(val1, val2, printJanela);
+        } else {
+            soma(val1, val2, printDocument);
+        }
+    </script>
+</body>
+</html>

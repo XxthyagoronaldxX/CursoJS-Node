@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas-Vindas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="welcome-container">
+        <h1>Bem-vindo, <span id="user-name">Usuário</span>!</h1>
+        <p>Estamos felizes em vê-lo aqui.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+
+            location.assign("../login");
+        }
+
+        const userName = localStorage.getItem("username");
+
+        if (userName == null || userName.length == 0) {
+            const path = "/Curso 2/Unidade 2/Atividade/Parte 3/login/index.html"
+
+            location.assign(location.origin + path);
+        } else {
+            document.getElementById('user-name').textContent = userName;
+        }
+    </script>
+</body>
+
+
+</html>
