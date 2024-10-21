@@ -1,38 +1,64 @@
-class Nota {
-    constructor(disciplina, nota) {
-        this.disciplina = disciplina;
-        this.nota = nota;
+const users = [
+    {
+        id: 1,
+        name: "Thyago",
+        age: 18,
+        email: "thyagoemail",
+        telefone: "thyagotelefone"
+    },
+    {
+        id: 2,
+        name: "Kaleo",
+        age: 20,
+        email: "kaleoemail",
+        telefone: "kaleotelefone"
+    },
+    {
+        id: 3,
+        name: "Ronaldo",
+        age: 28,
+        email: "ronaldoemail",
+        telefone: "ronaldotelefone"
+    },
+    {
+        id: 4,
+        name: "Emilly",
+        age: 16,
+        email: "emillyemail",
+        telefone: "emillytelefone"
+    }
+];
+
+function filterUsersByAgeHigherThan18(user) {
+    return user.age > 18;
+}
+
+function mapUsersToNameAndAge(user) {
+    return {
+        name: user.name,
+        age: user.age,
     }
 }
 
-class Aluno { 
-    constructor(nome, matricula) {
-        this.nome = nome;
-        this.matricula = matricula;
-        this.notas = [];
-    }
+function orderByAge(userA, userB) {
+    return userA.age - userB.age;
+}
 
-    addNota(nota) {
-        this.notas.push(nota);
-    }
+function userAgeAverage(acc, value) {
+    return acc + value.age;
+}
 
-    media() {
-        return this.notas.reduce((acc, value) => acc + value.nota, 0) / this.notas.length;
-    }
+function processList(users) {
+    const usersProcessed = users.filter(filterUsersByAgeHigherThan18)
+        .map(mapUsersToNameAndAge)
+        .sort(orderByAge);
 
-    toString() {
-        return `Nome: ${this.nome}, Matricula: ${this.matricula}, Média: ${this.media()}`;
+    const ageAverage = usersProcessed.reduce(userAgeAverage, 0) / usersProcessed.length;
+
+    return {
+        users: usersProcessed,
+        ageAverage,
     }
 }
 
-const nota01 = new Nota("Portugues", 5);
-const nota02 = new Nota("Inglês", 5);
-const nota03 = new Nota("Espanhol", 5);
-
-const aluno01 = new Aluno("Thyago", 203);
-
-aluno01.addNota(nota01);
-aluno01.addNota(nota02);
-aluno01.addNota(nota03);
-
-console.log(aluno01.toString());
+console.log(processList(users));

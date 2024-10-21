@@ -1,45 +1,38 @@
-class Funcionario {
-    constructor(nome, cpf, email) {
+class Nota {
+    constructor(disciplina, nota) {
+        this.disciplina = disciplina;
+        this.nota = nota;
+    }
+}
+
+class Aluno { 
+    constructor(nome, matricula) {
         this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-
-        if (this.constructor === Funcionario) {
-            throw new Error("Funcionario é uma classe abstrata.");
-        }
+        this.matricula = matricula;
+        this.notas = [];
     }
 
-    calcSalario() {
-        return 0;    
-    }
-}
-
-class FuncionarioHorista extends Funcionario {
-    constructor(nome, cpf, email, horas, valorHora) {
-        super(nome, cpf, email);
-        this.horas = horas;
-        this.valorHora = valorHora;
+    addNota(nota) {
+        this.notas.push(nota);
     }
 
-    calcSalario() {
-        return this.horas * this.valorHora;
+    media() {
+        return this.notas.reduce((acc, value) => acc + value.nota, 0) / this.notas.length;
+    }
+
+    toString() {
+        return `Nome: ${this.nome}, Matricula: ${this.matricula}, Média: ${this.media()}`;
     }
 }
 
-class FuncionarioMensalista extends Funcionario {
-    constructor(nome, cpf, email, valorMensal, percDesconto) {
-        super(nome, cpf, email);
-        this.valorMensal = valorMensal;
-        this.percDesconto = percDesconto;
-    }
+const nota01 = new Nota("Portugues", 5);
+const nota02 = new Nota("Inglês", 5);
+const nota03 = new Nota("Espanhol", 5);
 
-    calcSalario() {
-        return this.valorMensal - (this.valorMensal * this.percDesconto/100);
-    }
-}
+const aluno01 = new Aluno("Thyago", 203);
 
-const funcHorista = new FuncionarioHorista("Mr. Beast", "Test", "Test", 10, 100);
-const funcMensalista = new FuncionarioMensalista("Elon Musk", "Test", "Test", 2000, 50);
+aluno01.addNota(nota01);
+aluno01.addNota(nota02);
+aluno01.addNota(nota03);
 
-console.log(funcHorista.calcSalario());
-console.log(funcMensalista.calcSalario());
+console.log(aluno01.toString());

@@ -9,11 +9,14 @@ const validaValores = (a, b) => typeof a === "number" && typeof b === "number";
 const throwInvalidValues = () => {
     throw new Error("Valores inválidos");
 }
+const throwDivisionZero = () => {
+    throw new Error("Divisão por zero inválido!");
+}
 
 const soma = (a, b) => a + b;
 const subtracao = (a, b) => a - b;
 const multiplicacao = (a, b) => a * b;
-const divisao = (a, b) => a / b;
+const divisao = (a, b) => b == 0 ? throwDivisionZero() : a / b;
 
 const doOp = (a, b, op) => {
     if (validaValores(a, b)) {

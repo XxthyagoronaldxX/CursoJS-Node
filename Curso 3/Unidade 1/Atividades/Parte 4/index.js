@@ -1,12 +1,33 @@
-class Conversor {
-    static metrosParaQuilometros(metros) {
-        return metros / 1000;
+class Veiculo {
+    #marca;
+    #modelo;
+    #velocidade;
+
+    constructor(marca, modelo) {
+        this.#marca = marca;
+        this.#modelo = modelo;
+        this.#velocidade = 0;
     }
 
-    static quilometrosParaMetros(quilometros) {
-        return quilometros * 1000;
+    get velocidade() {
+        return this.#velocidade;
+    }
+
+    acelerar() {
+        this.#velocidade++;
+    }
+
+    frear() {
+        this.#velocidade--;
+    }
+
+    toString() {
+        return `Marca: ${this.#marca}, Modelo: ${this.#modelo}, Velocidade: ${this.#velocidade}`;
     }
 }
 
-console.log(Conversor.metrosParaQuilometros(1400));
-console.log(Conversor.quilometrosParaMetros(0.5));
+const carro = new Veiculo("Toyota", "Corolla");
+
+carro.acelerar();
+
+console.log(carro.velocidade);
