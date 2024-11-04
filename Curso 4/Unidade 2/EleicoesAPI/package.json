@@ -1,0 +1,19 @@
+{
+  "name": "eleicoesapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TCKUBIRIM",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "eleicoesapi": "file:",
+    "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "nodemon": "^3.1.7"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "expressHelloWorld",
+  "version": "1.0.0",
+  "description": "expressHelloWorld",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TCKUBIRIM",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "expressHelloWorld": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
