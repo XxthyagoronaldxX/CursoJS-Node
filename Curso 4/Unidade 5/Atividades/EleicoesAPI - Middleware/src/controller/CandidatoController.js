@@ -4,9 +4,7 @@ import HttpStatus from "../utils/HttpStatus.js";
 export async function findAllCandidato(req, res, next) {
     const candidatos = await candidatoService.findAllCandidato();
 
-    next(new Error("Something went wrong!"));
-
-    //return res.status(HttpStatus.OK).json(candidatos);
+    return res.status(HttpStatus.OK).json(candidatos);
 }
 
 export async function findCandidatoById(req, res) {
@@ -15,4 +13,16 @@ export async function findCandidatoById(req, res) {
     const candidato = await candidatoService.findCandidatoById(id);
 
     return res.status(HttpStatus.OK).json(candidato);
+}
+
+export async function deleteCandidatoById(req, res) {
+    console.log("[DeleteCandidatoById] :: Testing.");
+
+    return res.status(HttpStatus.OK).json("Deleted!");
+} 
+
+export async function saveCandidato(req, res) {
+    console.log("[SaveCandidato] :: Testing.");
+
+    return res.status(HttpStatus.CREATED).json("Created!");
 }

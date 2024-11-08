@@ -1,0 +1,20 @@
+{
+  "name": "EleicoesAPI",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "TCKUBIRIM",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./src/app.js"
+  },
+  "dependencies": {
+    "EleicoesAPI": "file:",
+    "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
