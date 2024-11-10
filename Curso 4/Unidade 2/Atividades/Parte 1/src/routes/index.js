@@ -1,5 +1,5 @@
 import { Router } from "express";
-import candidatoRouter from "./candidato_router.js";
+import candidatoRouter from "./CandidatoRouter.js";
 
 const router = Router();
 

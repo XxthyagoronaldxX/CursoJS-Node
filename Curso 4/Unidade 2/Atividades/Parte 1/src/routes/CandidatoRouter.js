@@ -1,5 +1,5 @@
 import { Router } from "express";
-import candidatoService from "../service/candidato_service.js";
+import candidatoService from "../service/CandidatoService.js";
 import HttpStatus from "../utils/HttpStatus.js";
 
 const CandidatoRouter = Router();

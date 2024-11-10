@@ -9,6 +9,6 @@ const candidatoRouter = Router();
 candidatoRouter.get("/", EleitorAuthMiddleware, candidatoController.findAllCandidato);
 candidatoRouter.get("/:id", EleitorAuthMiddleware, candidatoController.findCandidatoById);
 candidatoRouter.delete("/:id", AdminAuthMiddleware, candidatoController.deleteCandidatoById);
-candidatoRouter.post("/", AdminAuthMiddleware, CandidatoValidatorMiddleware, candidatoController.saveCandidato)
+candidatoRouter.post("/", AdminAuthMiddleware, CandidatoValidatorMiddleware, candidatoController.saveCandidato);
 
 export default candidatoRouter;
