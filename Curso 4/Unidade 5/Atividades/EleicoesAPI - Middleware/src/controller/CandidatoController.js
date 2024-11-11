@@ -1,7 +1,7 @@
 import * as candidatoService from "../services/CandidatoService.js";
 import HttpStatus from "../utils/HttpStatus.js";
 
-export async function findAllCandidato(req, res, next) {
+export async function findAllCandidato(req, res) {
     const candidatos = await candidatoService.findAllCandidato();
 
     return res.status(HttpStatus.OK).json(candidatos);
@@ -16,13 +16,26 @@ export async function findCandidatoById(req, res) {
 }
 
 export async function deleteCandidatoById(req, res) {
-    console.log("[DeleteCandidatoById] :: Testing.");
+    const { id } = req.params;
 
-    return res.status(HttpStatus.OK).json("Deleted!");
-} 
+    await candidatoService.deleteCandidatoById(id);
+
+    return res.status(HttpStatus.OK).json("Sucesso");
+}
 
 export async function saveCandidato(req, res) {
-    console.log("[SaveCandidato] :: Testing.");
+    const candidato = req.body;
 
-    return res.status(HttpStatus.CREATED).json("Created!");
+    const candidatoResult = await candidatoService.saveCandidato(candidato);
+
+    return res.status(HttpStatus.CREATED).json(candidatoResult);
+}
+
+export async function updateCandidato(req, res) {
+    const { id } = req.params;
+    const candidato = req.body;
+
+    const candidatoResult = await candidatoService.updateCandidato(id, candidato);
+
+    return res.status(HttpStatus.CREATED).json(candidatoResult);
 }

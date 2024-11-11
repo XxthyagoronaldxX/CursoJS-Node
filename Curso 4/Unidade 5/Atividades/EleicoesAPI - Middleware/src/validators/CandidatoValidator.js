@@ -1,9 +1,9 @@
 import Joi from "joi";
 
 const candidatoValidator = Joi.object({
-    name: Joi.string().required(),
-    vote: Joi.number().required(),
-    number: Joi.number().required()
+    nome: Joi.string().required(),
+    numero: Joi.string().required(),
+    partido: Joi.string().required()
 });
 
 export default candidatoValidator;
