@@ -22,3 +22,20 @@ export async function deleteCandidatoById(req, res) {
 
     return res.status(HttpStatus.OK).json("Sucesso");
 }
+
+export async function saveCandidato(req, res) {
+    const candidato = req.body;
+
+    const candidatoResult = await candidatoService.saveCandidato(candidato);
+
+    return res.status(HttpStatus.CREATED).json(candidatoResult);
+}
+
+export async function updateCandidato(req, res) {
+    const { id } = req.params;
+    const candidato = req.body;
+
+    const candidatoResult = await candidatoService.updateCandidato(id, candidato);
+
+    return res.status(HttpStatus.CREATED).json(candidatoResult);
+}
