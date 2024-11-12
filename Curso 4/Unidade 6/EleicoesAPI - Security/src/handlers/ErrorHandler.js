@@ -1,9 +1,8 @@
-import AlreadyVotedError from "../error/AlreadyVotedError.js";
-import CpfExistsError from "../error/CpfExistsError.js";
+import BadRequestError from "../error/BadRequestError.js";
 import HttpStatus from "../utils/HttpStatus.js";
 
 const ErrorHandler = (err, req, res, next) => {
-    if (err instanceof AlreadyVotedError || err instanceof CpfExistsError) {
+    if (err instanceof BadRequestError) {
         return res.status(HttpStatus.BADREQUEST).json(err.message);
     }
 

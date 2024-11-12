@@ -1,5 +1,4 @@
 import BadRequestError from "../error/BadRequestError.js";
-import CpfExistsError from "../error/CpfExistsError.js";
 import * as eleitorRepository from "../repository/EleitorRepository.js";
 import bcrypt from "bcrypt";
 
@@ -19,7 +18,7 @@ export async function saveEleitor(eleitor) {
     const eleitorByCpf = await eleitorRepository.findEleitorByCpf(eleitor.cpf);
 
     if (eleitorByCpf != null) {
-        throw new CpfExistsError("Já existe um eleitor cadastrado com esse CPF.");
+        throw new BadRequestError("Já existe um eleitor cadastrado com esse CPF.");
     }
 
     eleitor.senha = await bcrypt.hash(eleitor.senha, 10);
