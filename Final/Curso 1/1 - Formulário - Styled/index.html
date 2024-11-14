@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Styled</title>
+    <link rel="stylesheet" type="text/css"  href="index.css">
+</head>
+<body>
+    <div class="cmp">
+        <h1 class="cmp-title">Formulário de Contato</h1>
+        <form>
+            <label class="cmp-label" for="name-form">Nome completo:</label>
+            <input class="cmp-input" type="text" name="name" id="name-form" placeholder="Digite seu nome completo"/>
+
+            <label class="cmp-label" for="email-form">Email:</label>
+            <input class="cmp-input" type="email" name="email" id="email-form" placeholder="Digite seu email"/>
+
+            <label class="cmp-label" for="tel-form">Telefone:</label>
+            <input class="cmp-input" type="tel" name="tel" id="tel-form" placeholder="Digite seu telefone"/>
+
+            <p class="cmp-label">Sexo: </p>
+            <div class="cmp-radiobox">
+                <input type="radio" name="sexo" value="masculino" id="masculino-form">
+                <label class="cmp-label" for="masculino-form">Masculino</label>
+                <input type="radio" name="sexo" value="feminino" id="feminino-form">
+                <label class="cmp-label" for="feminino-form">Feminino</label>
+            </div>
+
+            <label class="cmp-label" for="area-form">Área de interesse:</label>
+            <select class="cmp-input" name="area" id="area-form">
+                <option value="desenvolvimento">Desenvolvimento</option>
+                <option value="estudo">Estudo</option>
+                <option value="db">DB</option>
+            </select>
+
+            <p class="cmp-label">Preferências de contato: </p>
+            <div class="cmp-checkbox">
+                <input type="checkbox" name="contato" value="email" id="contato-email-form">
+                <label class="cmp-label" for="contato-email-form">E-mail</label>
+                <input type="checkbox" name="contato" value="telefone" id="contato-telefone-form">
+                <label class="cmp-label" for="contato-telefone-form">Telefone</label>
+                <input type="checkbox" name="contato" value="sms" id="contato-sms-form">
+                <label class="cmp-label" for="contato-sms-form">SMS</label>
+            </div>
+
+            <label class="cmp-label" for="message-form">Mensagem:</label>
+            <textarea class="cmp-textarea" name="message" id="message-form" cols="30" rows="5" placeholder="Digite uma mensagem."></textarea>
+
+            <div class="cmp-submitbox">
+                <input class="cmp-submit" type="submit" value="Enviar"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

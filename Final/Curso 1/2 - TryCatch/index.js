@@ -35,7 +35,13 @@ const doOp = (a, b, op) => {
 }
 
 try {
-    console.log(doOp(10, "20", OP.SOMA));
+    const valorA = parseFloat(window.prompt("Informe o valor A: "));
+    const valorB = parseFloat(window.prompt("Informe o valor B: "));
+    const op = parseFloat(window.prompt("Informe a operação:\n\n1. Soma\n\n2. Subtração\n\n3. Multiplicação\n\n4. Divisão"))
+
+    const result = doOp(valorA, valorB, op);
+
+    window.alert("Resultado: " + result);
 } catch(err) {
-    console.error(err);
+    window.alert("Error: " + err.message);
 }

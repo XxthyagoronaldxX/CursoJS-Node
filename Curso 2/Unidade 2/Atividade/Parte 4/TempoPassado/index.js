@@ -13,7 +13,7 @@ function calcularTempoPassado(data) {
         const hours = Math.trunc(dateDiff / hoursInMS);
         const minutes = (dateDiff / minutesInMS) % 60;
 
-        return `Dias: ${} ${hours}:${minutes}`;
+        return `Dias: ${daysInMS} ${hours}:${minutes}`;
     }
 }
 
