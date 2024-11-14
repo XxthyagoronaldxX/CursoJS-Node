@@ -1,9 +1,9 @@
 import Joi from "joi";
 
-const updateSenhaDTOValidator = Joi.object({
+const updateSenhaValidator = Joi.object({
     id: Joi.number().required(),
     senha: Joi.string().required(),
     novaSenha: Joi.string().required()
 });
 
-export default updateSenhaDTOValidator;
+export default updateSenhaValidator;

@@ -1,18 +1,26 @@
 import * as eleitorService from "../services/EleitorService.js";
 import HttpStatus from "../utils/HttpStatus.js";
 
-export async function findAllEleitor(req, res) {
-    const eleitores = await eleitorService.findAllEleitor();
+export async function findAllEleitor(req, res, next) {
+    try {
+        const eleitores = await eleitorService.findAllEleitor();
 
-    return res.status(HttpStatus.OK).json(eleitores);
+        return res.status(HttpStatus.OK).json(eleitores);
+    } catch(err) {
+        next(err);
+    }
 }
 
-export async function findEleitorById(req, res) {
-    const { id } = req.params;
+export async function findEleitorById(req, res, next) {
+    try {
+        const { id } = req.params;
 
-    const eleitor = await eleitorService.findEleitorById(id);
+        const eleitor = await eleitorService.findEleitorById(id);
 
-    return res.status(HttpStatus.OK).json(eleitor);
+        return res.status(HttpStatus.OK).json(eleitor);
+    } catch(err) {
+        next(err);
+    }
 }
 
 export async function deleteEleitorById(req, res) {
@@ -35,18 +43,36 @@ export async function saveEleitor(req, res, next) {
     }
 }
 
-export async function updateEleitor(req, res) {
-    const { id } = req.params;
-    const eleitor = req.body;
+export async function updateEleitorByAdmin(req, res, next) {
+    try {
+        const { id } = req.params;
+        const eleitor = req.body;
 
-    const eleitorResult = await eleitorService.updateEleitor(id, eleitor);
+        const eleitorResult = await eleitorService.updateEleitor(id, eleitor);
 
-    return res.status(HttpStatus.OK).json(eleitorResult);
+        return res.status(HttpStatus.OK).json(eleitorResult);
+    } catch(err) {
+        next(err);
+    }
+}
+
+export async function updateEleitorByEleitor(req, res, next) {
+    try {
+        const id = req.userId;
+        const eleitor = req.body;
+
+        const eleitorResult = await eleitorService.updateEleitor(id, eleitor);
+
+        return res.status(HttpStatus.OK).json(eleitorResult);
+    } catch(err) {
+        next(err);
+    }
 }
 
 export async function updateEleitorOnSenha(req, res, next) {
     try {
-        const { id, senha, novaSenha } = req.body;
+        const id = req.userId;
+        const { senha, novaSenha } = req.body;
 
         await eleitorService.updateEleitorOnSenha(id, senha, novaSenha);
 

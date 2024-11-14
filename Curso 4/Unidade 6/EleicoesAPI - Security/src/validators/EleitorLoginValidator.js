@@ -1,8 +1,8 @@
 import Joi from "joi";
 
-const eleitorLoginDtoValidator = Joi.object({
+const eleitorLoginValidator = Joi.object({
     cpf: Joi.string().required(),
     senha: Joi.string().required()
 });
 
-export default eleitorLoginDtoValidator;
+export default eleitorLoginValidator;

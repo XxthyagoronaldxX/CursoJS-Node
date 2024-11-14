@@ -2,17 +2,26 @@ import { Router } from "express";
 import * as eleitorController from "../controller/EleitorController.js";
 import validatorMiddleware from "../middlewares/ValidatorMiddleware.js";
 import eleitorValidator from "../validators/EleitorValidator.js";
-import eleitorLoginDtoValidator from "../validators/EleitorLoginDTOValidator.js";
-import updateSenhaDTOValidator from "../validators/UpdateSenhaDTOValidator.js";
+import eleitorLoginValidator from "../validators/EleitorLoginValidator.js";
+import updateSenhaValidator from "../validators/UpdateSenhaValidator.js";
+import EleitorAuthMiddleware from "../middlewares/EleitorAuthMiddleware.js";
+import AdminAuthMiddleware from "../middlewares/AdminAuthMiddleware.js";
+import updateEleitorValidator from "../validators/UpdateEleitorValidator.js";
 
 const eleitorRouter = Router();
 
-eleitorRouter.get("/", eleitorController.findAllEleitor);
-eleitorRouter.get("/:id", eleitorController.findEleitorById);
-eleitorRouter.delete("/:id", eleitorController.deleteEleitorById);
+// ELEITOR & ADMIN
+eleitorRouter.get("/", EleitorAuthMiddleware, eleitorController.findAllEleitor);
+eleitorRouter.get("/:id", EleitorAuthMiddleware, eleitorController.findEleitorById);
+eleitorRouter.put("/senha", EleitorAuthMiddleware, validatorMiddleware(updateSenhaValidator), eleitorController.updateEleitorOnSenha);
+eleitorRouter.put("/", EleitorAuthMiddleware, validatorMiddleware(updateEleitorValidator), eleitorController.updateEleitorByEleitor);
+
+// ADMIN 
+eleitorRouter.delete("/:id", AdminAuthMiddleware, eleitorController.deleteEleitorById);
+eleitorRouter.put("/:id", AdminAuthMiddleware, validatorMiddleware(eleitorValidator), eleitorController.updateEleitorByAdmin);
+
+// PUBLIC 
 eleitorRouter.post("/", validatorMiddleware(eleitorValidator), eleitorController.saveEleitor);
-eleitorRouter.put("/:id", validatorMiddleware(eleitorValidator), eleitorController.updateEleitor);
-eleitorRouter.post("/login", validatorMiddleware(eleitorLoginDtoValidator), eleitorController.loginEleitor);
-eleitorRouter.put("/:id/senha", validatorMiddleware(updateSenhaDTOValidator), eleitorController.updateEleitorOnSenha);
+eleitorRouter.post("/login", validatorMiddleware(eleitorLoginValidator), eleitorController.loginEleitor);
 
 export default eleitorRouter;

@@ -5,6 +5,8 @@ export async function saveVoto(req, res, next) {
     try {
         const voto = req.body;
 
+        voto.eleitorId = req.userId;
+
         const votoResult = await votoService.saveVoto(voto);
 
         return res.status(HttpStatus.OK).json(votoResult);
