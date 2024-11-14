@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const votoValidator = Joi.object({
-    eleicaoId: Joi.string().required(),
+    eleicaoId: Joi.number().required(),
     numero: Joi.string().required()
 });
 

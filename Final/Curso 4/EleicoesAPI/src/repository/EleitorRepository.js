@@ -1,5 +1,4 @@
 import pool from "../config/PostgresConfig.js";
-import RoleEnum from "../utils/RoleEnum.js";
 
 export async function findAllEleitor() {
     const result = await pool.query("SELECT * FROM eleitor");
@@ -41,4 +40,8 @@ export async function updateEleitor(id, eleitor) {
 
 export async function updateEleitorOnSenha(id, senha) {
     await pool.query("UPDATE eleitor SET senha = $1 WHERE id = $2", [senha, id]);
+}
+
+export async function updateEleitorOnPerfil(id, perfil) {
+    await pool.query("UPDATE eleitor SET perfil = $1 WHERE id = $2", [perfil, id]);
 }

@@ -115,4 +115,4 @@ GROUP BY eleicao.id, candidato.nome, candidato.numero, candidato.partido;
 
 SELECT * FROM vw_contagem_votos AS contVotos 
 WHERE contVotos.candidatonumero = '101' 
-AND contVotos.eleicaoid = 2;
+AND contVotos.eleicaoid = 1;

@@ -7,6 +7,7 @@ import updateSenhaValidator from "../validators/UpdateSenhaValidator.js";
 import EleitorAuthMiddleware from "../middlewares/EleitorAuthMiddleware.js";
 import AdminAuthMiddleware from "../middlewares/AdminAuthMiddleware.js";
 import updateEleitorValidator from "../validators/UpdateEleitorValidator.js";
+import updatePerfilValidator from "../validators/UpdatePerfilValidator.js";
 
 const eleitorRouter = Router();
 
@@ -18,6 +19,7 @@ eleitorRouter.put("/", EleitorAuthMiddleware, validatorMiddleware(updateEleitorV
 
 // ADMIN 
 eleitorRouter.delete("/:id", AdminAuthMiddleware, eleitorController.deleteEleitorById);
+eleitorRouter.put("/perfil", AdminAuthMiddleware, validatorMiddleware(updatePerfilValidator), eleitorController.updateEleitorOnPerfil);
 eleitorRouter.put("/:id", AdminAuthMiddleware, validatorMiddleware(eleitorValidator), eleitorController.updateEleitorByAdmin);
 
 // PUBLIC 

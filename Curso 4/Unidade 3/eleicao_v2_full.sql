@@ -7,18 +7,6 @@
 
 -- Started on 2024-11-04 18:14:44
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
 --
 -- TOC entry 4 (class 2615 OID 2200)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
@@ -38,6 +26,18 @@ COMMENT ON SCHEMA public IS 'standard public schema';
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 16826)
+-- Name: eleitor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.eleitor (
+    id integer NOT NULL,
+    nome character varying(255),
+    cpf character varying(11),
+    senha character varying(255)
+);
 
 --
 -- TOC entry 218 (class 1259 OID 16819)
@@ -156,19 +156,6 @@ ALTER SEQUENCE public.eleicao_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE public.eleicao_id_seq OWNED BY public.eleicao.id;
-
-
---
--- TOC entry 220 (class 1259 OID 16826)
--- Name: eleitor; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.eleitor (
-    id integer NOT NULL,
-    nome character varying(255),
-    cpf character varying(11),
-    senha character varying(255)
-);
 
 
 ALTER TABLE public.eleitor OWNER TO postgres;

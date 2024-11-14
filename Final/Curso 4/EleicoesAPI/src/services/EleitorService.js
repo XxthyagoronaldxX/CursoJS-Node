@@ -73,3 +73,13 @@ export async function loginEleitor(loginDTO) {
 
     return jwtService.generate(payload);
 }
+
+export async function updateEleitorOnPerfil(id, perfil) {
+    const eleitorById = await eleitorRepository.findEleitorById(id);
+
+    if (!eleitorById) {
+        throw new AppError("Eleitor não foi encontrado.", HttpStatus.BADREQUEST);
+    }
+
+    return await eleitorRepository.updateEleitorOnPerfil(id, perfil);
+}

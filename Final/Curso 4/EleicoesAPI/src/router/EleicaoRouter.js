@@ -12,11 +12,11 @@ const eleicaoRouter = Router();
 // ELEITOR & ADMIN
 eleicaoRouter.get("/", EleitorAuthMiddleware, eleicaoController.findAllEleicao);
 eleicaoRouter.get("/:id", EleitorAuthMiddleware, eleicaoController.findEleicaoById);
+eleicaoRouter.get("/:id/summary", EleitorAuthMiddleware, eleicaoController.findAllEleicaoSummaryById);
 
 // ADMIN
 eleicaoRouter.post("/novo-candidato", AdminAuthMiddleware, validatorMiddleware(addCandidatoToEleicaoValidator), candidatoEleicaoController.addCandidatoToEleicao);
 eleicaoRouter.put("/remove-candidato", AdminAuthMiddleware, candidatoEleicaoController.removeCandidatoFromEleicao);
-eleicaoRouter.get("/:id/summary", AdminAuthMiddleware, eleicaoController.findAllEleicaoSummaryById);
 eleicaoRouter.delete("/:id", AdminAuthMiddleware, eleicaoController.deleteEleicaoById);
 eleicaoRouter.post("/", AdminAuthMiddleware, validatorMiddleware(eleicaoValidator), eleicaoController.saveEleicao);
 eleicaoRouter.put("/:id", AdminAuthMiddleware, validatorMiddleware(eleicaoValidator), eleicaoController.updateEleicao);

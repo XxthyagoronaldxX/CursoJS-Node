@@ -69,6 +69,18 @@ export async function updateEleitorByEleitor(req, res, next) {
     }
 }
 
+export async function updateEleitorOnPerfil(req, res, next) {
+    try {
+        const { id, perfil } = req.body;
+
+        await eleitorService.updateEleitorOnPerfil(id, perfil);
+
+        return res.status(HttpStatus.OK).json();
+    } catch(err) {
+        next(err);
+    }
+}
+
 export async function updateEleitorOnSenha(req, res, next) {
     try {
         const id = req.userId;
